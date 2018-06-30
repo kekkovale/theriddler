@@ -1,16 +1,16 @@
 package com.neo.theriddler;
 
-public class Riddler {
+public class Riddle {
 
     private String riddle;
     private String solution;
 
-    public Riddler(String riddle, String solution) {
+    public Riddle(String riddle, String solution) {
         this.riddle = riddle;
         this.solution = solution;
     }
 
-    public Riddler(Riddler riddler) {
+    public Riddle(Riddle riddle) {
         this.riddle = this.getRiddle();
         this.solution = this.getSolution();
     }

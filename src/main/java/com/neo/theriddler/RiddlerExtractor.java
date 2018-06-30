@@ -5,10 +5,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
-public class HtmlParser {
+public class RiddlerExtractor {
 
-    public Riddler generateRiddle(){
+    public Riddle extractRiddle(){
 
         int riddleNumber = generateRandomValue();
         return extractRiddle(riddleNumber);
@@ -19,8 +21,23 @@ public class HtmlParser {
         return (int) (Math.random() * (6000 - 1)) + 1;
     }
 
-    private Riddler extractRiddle(int riddleNumber){
-        Riddler riddle = null;
+    public List<Riddle> extractRiddles(int numberOfRiddleToExtract){
+        List<Riddle> riddles = new LinkedList<>();
+
+        while(numberOfRiddleToExtract != 0){
+            final Riddle riddle = this.extractRiddle(this.generateRandomValue());
+
+            if (riddle != null){
+                riddles.add(riddle);
+                --numberOfRiddleToExtract;
+            }
+        }
+
+        return riddles;
+    }
+
+    private Riddle extractRiddle(int riddleNumber){
+        Riddle riddle = null;
         String riddleText = null;
         String riddleSolutionText = null;
 
@@ -46,7 +63,7 @@ public class HtmlParser {
                 //exception
             }
 
-            riddle = new Riddler(riddleText, riddleSolutionText);
+            riddle = new Riddle(riddleText, riddleSolutionText);
 
         } catch (IOException e) {
             e.printStackTrace();

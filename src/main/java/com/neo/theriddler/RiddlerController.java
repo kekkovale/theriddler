@@ -1,19 +1,28 @@
 package com.neo.theriddler;
 
-import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class RiddlerController {
 
     @RequestMapping("/get-riddle")
-    public Riddler getRiddle() {
+    public Riddle getRiddle() {
 
-        HtmlParser htmlParser = new HtmlParser();
-        final Riddler riddle = htmlParser.generateRiddle();
+        RiddlerExtractor riddlerExtractor = new RiddlerExtractor();
+        final Riddle riddle = riddlerExtractor.extractRiddle();
 
         return riddle;
+    }
+
+    @RequestMapping("/get-riddles")
+    public List<Riddle> getRiddles() {
+
+        RiddlerExtractor riddlerExtractor = new RiddlerExtractor();
+        final List<Riddle> riddles = riddlerExtractor.extractRiddles(10);
+
+        return riddles;
     }
 }

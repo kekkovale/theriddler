@@ -12,9 +12,9 @@ public class TheriddlerApplicationTests {
 	@Test
 	public void contextLoads() {
 
-		HtmlParser htmlParser = new HtmlParser();
+		RiddlerExtractor riddlerExtractor = new RiddlerExtractor();
 
-		htmlParser.generateRiddle();
+		riddlerExtractor.extractRiddle();
 
 	}
 
