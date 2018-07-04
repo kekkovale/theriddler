@@ -63,7 +63,8 @@ public class RiddlerExtractor {
                 //exception
             }
 
-            riddle = new Riddle(riddleText, riddleSolutionText);
+            riddle = new Riddle(riddleNumber, riddleText, riddleSolutionText);
+            StoreRiddles.storeRiddle(riddle);
 
         } catch (IOException e) {
             e.printStackTrace();

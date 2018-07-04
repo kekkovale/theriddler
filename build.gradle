@@ -26,6 +26,11 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-aop')
+	// JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Use MySQL Connector-J
+	compile 'mysql:mysql-connector-java'
 	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	//compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
